@@ -1,0 +1,131 @@
+---
+import Container from "../layouts/Container.astro"
+---
+
+<header class="primary-header">
+  <Container>
+    <div class="container">
+      <img src="/logo.svg" alt="U-Coda">
+      <nav class="navigation">
+        <ul class="navigation-ul" role="list">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="expandable">
+            <a href="#">All Courses</a>
+            <ul role="list" class="expandable-content">
+              <li><a href="#">Mindfulness for Everyday Life</a></li>
+              <li><a href="#">Stress Management Techniques</a></li>
+              <li><a href="#">Public Speaking</a></li>
+              <li><a href="#">Effective Communication Skills</a></li>
+              <li><a href="#">Time Management Strategies</a></li>
+              <li><a href="#">Goal Setting and Motivation</a></li>
+              <li><a href="#">Build Self-Discipline</a></li>
+              <li><a href="#">Empowering Your Personal Growth</a></li>
+              <li><a href="#">Become a Confident Leader</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="buttons">
+        <a class="button" type="transparent" href="#">
+          Sign in
+        </a>
+        <a class="button" href="#">Free Trial</a>
+      </div>
+    </div>
+  </Container>
+</header>
+<script>
+  const expandableLis = document.querySelectorAll('.navigation .expandable')
+  expandableLis.forEach(li => {
+    li.addEventListener('click', e => {
+      console.log('li click')
+      e.stopPropagation()
+      li.classList.toggle('opened')
+    })
+    document.body.addEventListener('click', (e) => {
+      if(!e.target.closest('.navigation .expandable')) {
+        li.classList.remove('opened')
+      }
+    })
+  })
+</script>
+
+<style>
+  .primary-header {
+    background-color: var(--accent-light);
+    padding: 3rem 0;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  .navigation {
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .navigation .navigation-ul {
+    display: flex;
+    gap: 4.5rem;
+    list-style-type: none;
+  }
+  .navigation .navigation-ul > li.active {
+    font-weight: 700;
+  }
+  .navigation .navigation-ul > li.expandable {
+    background-image: url('/expand.svg');
+    background-repeat: no-repeat;
+    background-position: right bottom 0.5rem;
+    padding-right: 1.3rem;
+    position: relative;
+  }
+  .navigation .expandable-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    top: 130%;
+    left: 0;
+    visibility: hidden;
+  }
+  .navigation .navigation-ul > li.expandable.opened .expandable-content {
+    visibility: visible;
+  }
+  .navigation .expandable-content a {
+    display: block;
+    background-color: var(--accent-light2);
+    padding: .5rem 1.3rem;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 1.05rem;
+  }
+
+
+  .navigation .expandable-content li:first-child a {
+    border-radius: 10px 10px 0 0;
+  }
+  .navigation .expandable-content li:last-child a {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .navigation .expandable-content a:hover {
+    background-color: var(--accent-light);
+    color: #3a3b3b;
+  }
+
+  .navigation a {
+    text-decoration: none;
+    color: #575859;
+  }
+</style>
