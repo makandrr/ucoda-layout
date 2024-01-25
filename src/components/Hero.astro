@@ -1,0 +1,64 @@
+---
+import Container from "../layouts/Container.astro";
+---
+
+<div class="hero">
+  <Container>
+    <div class="local-container">
+      <div class="left-col">
+        <h1>
+          Anytime, anywhere Develop your skill by Online
+        </h1>
+        <p>Online education is a form of education where students use their home computers through the internet. For many nontraditional students, among them all those who want to continue.</p>
+        <div class="button" data-size="large">All Courses</div>
+      </div>
+      <div class="right-col">
+        <img src="/hero.png" alt="">
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .hero {
+    background-color: var(--accent-light);
+    padding: 6rem 0;
+  }
+  .local-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.6rem;
+  }
+  .left-col h1 {
+    font-size: 4rem;
+  }
+  .left-col p {
+    font-size: 1.125rem;
+    color: #6C6C6A;
+    line-height: 1.875rem;
+    font-weight: 600;
+  }
+  .right-col {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 65em) {
+    .local-container {
+      grid-template-columns: 1fr;
+    }
+    .left-col h1 {
+      font-size: 2rem;
+    }
+    .right-col {
+      order: -1;
+    }
+  }
+</style>
