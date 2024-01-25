@@ -1,0 +1,44 @@
+---
+import Container from "../layouts/Container.astro";
+---
+
+<div class="get-started">
+  <Container>
+    <div class="local-container">
+      <div class="left-col">
+        <img src="/steps.png" alt="1. Create acoount. 2. Find courses. 3. Book seat. 4. Get Started">
+      </div>
+      <div class="right-col">
+        <h1>Get Started in 4 Easy Steps</h1>
+        <p>Proper and good education is very important for all of us. It facilitates quality learning all through the life among people of any age group, cast, creed, religion and region.</p>
+        <p>It is the process of achieving knowledge, values, skills, beliefs, and moral habits.Education is the process of facilitating learning, or the acquisiof knowledge, skills, values.</p>
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .get-started {
+    padding: 5rem 0;
+  }
+  .local-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+  }
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  h1 {
+    color: #242323;
+    font-size: 3.625rem;
+  }
+  p {
+    font-size: 1.125rem;
+    line-height: 1.875rem; 
+    color: #8C8E90;
+  }
+</style>
