@@ -4,6 +4,7 @@ import Container from "../layouts/Container.astro"
 
 <header class="primary-header">
   <Container>
+    <div class="mobile-menu-backdrop"></div>
     <div class="container">
       <img src="/logo.svg" alt="U-Coda">
       <nav class="navigation">
@@ -32,16 +33,20 @@ import Container from "../layouts/Container.astro"
           Sign in
         </a>
         <a class="button" href="#">Free Trial</a>
+        <button class="burger-menu-button">
+          <img src="/menu.svg" alt="Open Menu">
+        </button>
       </div>
     </div>
   </Container>
 </header>
 <script>
   const expandableLis = document.querySelectorAll('.navigation .expandable')
+  const burgerButton = document.querySelector('.burger-menu-button')
+  const navigation = document.querySelector('.navigation')
+  const mobileBackdrop = document.querySelector('.mobile-menu-backdrop')
   expandableLis.forEach(li => {
     li.addEventListener('click', e => {
-      console.log('li click')
-      e.stopPropagation()
       li.classList.toggle('opened')
     })
     document.body.addEventListener('click', (e) => {
@@ -49,6 +54,22 @@ import Container from "../layouts/Container.astro"
         li.classList.remove('opened')
       }
     })
+  })
+  navigation.addEventListener('click', e => {
+    if(!e.target.closest('.navigation .expandable') || e.target.closest('.expandable-content')) {
+      navigation.classList.remove('opened') 
+      mobileBackdrop.classList.remove('opened')
+    }
+  })
+
+  
+  burgerButton.addEventListener('click', () => {
+    navigation.classList.toggle('opened')
+    mobileBackdrop.classList.add('opened')
+  })
+  mobileBackdrop.addEventListener('click', () => {
+    navigation.classList.remove('opened')
+    mobileBackdrop.classList.remove('opened')
   })
 </script>
 
@@ -127,5 +148,86 @@ import Container from "../layouts/Container.astro"
   .navigation a {
     text-decoration: none;
     color: #575859;
+  }
+
+  .burger-menu-button {
+    border: none;
+    background: transparent;
+    display: none;
+  }
+
+  .burger-menu-button img {
+    width: 2.4rem;
+  }
+
+  .mobile-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+  }
+  .mobile-menu-backdrop.opened {
+    display: block;
+  }
+
+  @media (max-width: 65em) {
+    .container {
+      grid-template-columns: 1fr 1fr;
+    }
+    .burger-menu-button {
+      display: block;
+    }
+    .navigation {
+      position: fixed;
+      right: -100%;
+      top: 0;
+      bottom: 0;
+      background-color: var(--accent-light2);
+      box-shadow: -1px 0 10px 0 rgba(0,0,0,0.3);
+      min-width: 70vmin;
+      transition: 200ms all;
+    }
+    .navigation.opened {
+      right: 0;
+    }
+    .navigation .navigation-ul {
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+    .navigation .navigation-ul a {
+      display: block;
+      width: 100%;
+      padding: .5rem 1rem;
+    }
+    .navigation .navigation-ul li:not(.opened):hover {
+      background-color: var(--accent-light);
+    }
+    .navigation .navigation-ul > li.expandable {
+      background-position: right 0.5rem center;
+      background-size: 1rem;
+      padding-right: 0;
+    }
+    .navigation .expandable-content {
+      position: static;
+      display: none;
+    }
+    .navigation .navigation-ul > li.expandable.opened .expandable-content {
+      display: block;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+    }
+    .navigation .navigation-ul > li.expandable.opened .expandable-content a {
+      padding-left: 2rem;
+    }
+    .buttons .button {
+      display: none;
+    }
+    .primary-header {
+      padding-top: 1.4rem;
+      padding-bottom: 1.4rem;
+    }
   }
 </style>
