@@ -1,0 +1,64 @@
+---
+import Container from "../layouts/Container.astro";
+---
+
+<div class="trusted">
+  <Container>
+    <div class="local-container">
+      <h2>Trusted by 30,000+ satisfied students</h2>
+      <div class="logos">
+        <img class="udemy" src="/udemy.png" alt="Udemy">
+        <img class="fiverr" src="/fiverr.png" alt="Fiverr">
+        <img class="byjus" src="/byjus.png" alt="Byju's">
+        <img class="microsoft" src="/microsoft.png" alt="Microsoft">
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .trusted {
+    padding: 4rem 0;
+  }
+  .local-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h2 {
+    flex: 3;
+    font-size: 2.2rem;
+    color: #575859;
+    line-height: 3.09831rem;
+  }
+  .logos {
+    flex: 7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: 2.5rem;
+  }
+  .logos img {
+    width: 10rem;
+  }
+  .fiverr {
+    padding: 1.3rem;
+  }
+
+  @media (max-width: 65rem) {
+    h2 {
+      text-align: center;
+    }
+    .local-container {
+      flex-direction: column;
+    }
+    .logos {
+      grid-template-columns: 1fr;
+      margin-top: 1rem;
+    }
+    .fiverr {
+      padding: 0;
+    }
+  }
+</style>
