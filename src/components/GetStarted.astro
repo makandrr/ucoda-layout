@@ -41,4 +41,13 @@ import Container from "../layouts/Container.astro";
     line-height: 1.875rem; 
     color: #8C8E90;
   }
+
+  @media (max-width: 65em) {
+    .local-container {
+      grid-template-columns: 1fr;
+    }
+    .right-col {
+      order: -1
+    }
+  }
 </style>
