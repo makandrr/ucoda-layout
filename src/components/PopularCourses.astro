@@ -1,0 +1,55 @@
+---
+import Container from "../layouts/Container.astro";
+import CourseCard from "./CourseCard.astro";
+---
+
+<div class="courses">
+  <Container>
+    <h2>Our Popular Courses</h2>
+    <ul role="list" class="course-list">
+      <div class="card"><CourseCard coursePreview="/courses/c1.jpg" /></div>
+      <div class="card"><CourseCard coursePreview="/courses/c2.jpg" /></div>
+      <div class="card"><CourseCard coursePreview="/courses/c3.jpg" /></div>
+      <div class="card"><CourseCard coursePreview="/courses/c4.jpg" /></div>
+      <div class="card"><CourseCard coursePreview="/courses/c5.jpg" /></div>
+      <div class="card"><CourseCard coursePreview="/courses/c6.jpg" /></div>
+    </ul>
+    <div class="button-container">
+      <a class="button" data-size="large" href="#">View All Courses</a>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .courses {
+    background-color: var(--accent-light);
+    padding: 5rem 0;
+  }
+  h2 {
+    color: #242323;
+    font-size: 3.625rem;
+  }
+  .course-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 7rem;
+  }
+  .course-list > :nth-child(3n-1) {
+    transform: translateY(-3.5rem);
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  @media (max-width: 80em) {
+    .course-list > :nth-child(3n-1) {
+      transform: none;
+    }
+    .course-list {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+  }
+</style>
