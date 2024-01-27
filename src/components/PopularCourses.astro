@@ -1,5 +1,6 @@
 ---
 import Container from "../layouts/Container.astro";
+import Button from "./Button.astro";
 import CourseCard from "./CourseCard.astro";
 ---
 
@@ -15,7 +16,7 @@ import CourseCard from "./CourseCard.astro";
       <div class="card"><CourseCard coursePreview="/courses/c6.jpg" /></div>
     </ul>
     <div class="button-container">
-      <a class="button" data-size="large" href="#">View All Courses</a>
+      <Button size="large" href="#">View All Courses</Button>
     </div>
   </Container>
 </div>

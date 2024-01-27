@@ -1,0 +1,41 @@
+---
+const {href = '', type = 'primary', size = 'default'} = Astro.props
+---
+
+<a href={href} data-type={type} data-size={size} class="button">
+  <slot />
+</a>
+
+<style>
+  .button {
+		display: inline-flex;
+		padding: 1rem 1.5rem;
+		background-color: var(--accent);
+		text-decoration: none;
+		color: #fff;
+    font-weight: 600;
+		border-radius: 5px;
+		font-size: 1.1rem;
+		transition: 200ms opacity;
+    outline: none;
+    border: none;
+	}
+	.button:hover {
+		opacity: 0.8;
+	}
+	.button[data-type="transparent"] {
+		background-color: transparent;
+		color: #575859;
+	}
+	.button[data-type="outline"] {
+		background-color: transparent;
+		box-shadow: inset 0 0 0 1px #fff;
+	}
+	.button[data-type="white"] {
+		background-color: #fff;
+		color: #242323;
+	}
+	.button[data-size="large"] {
+		padding: 1.3rem 2.5rem;
+	}
+</style>
