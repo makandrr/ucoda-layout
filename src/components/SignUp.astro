@@ -1,0 +1,39 @@
+---
+import Container from "../layouts/Container.astro";
+---
+
+<div class="signup">
+  <Container>
+    <h1>Sign up & Enroll now, and Get Free Trial For 20Days</h1>
+    <div class="buttons">
+      <a class="button" href="#" data-type="outline">Sign up</a>
+      <a class="button" href="#" data-type="white">Start Free Trial</a>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .signup {
+    background-color: var(--accent);
+    padding: 5.5rem 0;
+  }
+  h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 3.125rem;
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+  .buttons {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 65em) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
