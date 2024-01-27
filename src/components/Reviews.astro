@@ -1,0 +1,54 @@
+---
+import Container from "../layouts/Container.astro";
+import ReviewCard from "./ReviewCard.astro";
+---
+
+<div class="reviews">
+  <Container>
+    <h1>Students say about us </h1>
+    <ul class="reviews-list">
+      <div class="card1" ><ReviewCard type="primary" /></div>
+      <div class="card2"><ReviewCard type="secondary" /></div>
+      <div class="card3"><ReviewCard type="secondary" /></div>
+    </ul>  
+  </Container>  
+</div>
+
+<style>
+  h1 {
+    text-align: center;
+    color: #242323;
+    font-weight: 600;
+    font-size: 3.6rem;
+  }
+  .reviews {
+    padding: 7rem 0;
+  }
+  .reviews-list {
+    display: grid;
+    grid-template-areas: "card1 card2"
+                         "card1 card3";
+    list-style: none;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  .card1 {
+    grid-area: card1;
+  }
+  .card2 {
+    grid-area: card2;
+  }
+  .card3 {
+    grid-area: card3;
+  }
+
+  @media (max-width: 65em) {
+    .reviews-list {
+      grid-template-areas: none;
+      grid-template-columns: 1fr;
+    }
+    .card1, .card2, .card3 {
+      grid-area: initial
+    }
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+const {type} = Astro.props
+---
+
+<li class="card" data-type={type}>
+  <div class="avatar-frame">
+    <img src="/reviews/r1.jpg" alt="">
+  </div>
+  <p class="text">
+    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+  </p>
+  <h2 class="author-name">Jeiliya mathus</h2>
+  <p class="author-job-title">Product Designer, Google</p>
+</li>
+
+<style>
+.card {
+  border: 1px solid rgba(231, 231, 231, 0.70);
+  border-radius: 1rem;
+  height: 100%;
+  width: 100%;
+  padding: 1.7rem;
+}
+.card[data-type="primary"] {
+  box-shadow: 30px 30px 70px 0px rgba(99, 98, 98, 0.06);
+  border: none;
+}
+.avatar-frame {
+  --n: 1;
+  --d: 1;
+  aspect-ratio: var(--n) / var(--d);
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 8rem;
+  padding: 3px;
+  border: 3px solid #45B871;
+}
+
+.card[data-type="secondary"] .avatar-frame {
+  max-width: 5.5rem;
+  border-width: 2px;
+}
+
+.avatar-frame > img {
+  border-radius: 100%;
+}
+
+.frame > img, .avatar-frame > img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.text {
+  font-size: 1.75rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  color: #8C8E90;
+}
+
+.card[data-type="secondary"] .text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.author-name {
+  font-size: 1.875rem;
+  margin-top: 1.5rem;
+  color: #242323;
+}
+.card[data-type="secondary"] .author-name {
+  font-size: 1.2rem;
+}
+
+.author-job-title {
+  font-size: 1.25rem;
+  margin-top: .4rem;
+  color: #636262;
+}
+.card[data-type="secondary"] .author-job-title {
+  font-size: 0.8rem;
+}
+</style>
