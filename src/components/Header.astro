@@ -1,12 +1,11 @@
 ---
-import Container from "../layouts/Container.astro"
 import Button from "./Button.astro"
 ---
 
 <header class="primary-header">
-  <Container>
+  <div class="container">
     <div class="mobile-menu-backdrop"></div>
-    <div class="container">
+    <div class="local-container">
       <img src="/logo.svg" alt="U-Coda">
       <nav class="navigation">
         <ul class="navigation-ul" role="list">
@@ -39,7 +38,7 @@ import Button from "./Button.astro"
         </button>
       </div>
     </div>
-  </Container>
+  </div>
 </header>
 <script>
   const expandableLis = document.querySelectorAll('.navigation .expandable')
@@ -79,7 +78,7 @@ import Button from "./Button.astro"
     background-color: var(--accent-light);
     padding: 3rem 0;
   }
-  .container {
+  .local-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;

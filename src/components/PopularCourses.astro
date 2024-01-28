@@ -1,11 +1,10 @@
 ---
-import Container from "../layouts/Container.astro";
 import Button from "./Button.astro";
 import CourseCard from "./CourseCard.astro";
 ---
 
 <div class="courses">
-  <Container>
+  <div class="container">
     <h2>Our Popular Courses</h2>
     <ul role="list" class="course-list">
       <div class="card"><CourseCard coursePreview="/courses/c1.jpg" /></div>
@@ -18,7 +17,7 @@ import CourseCard from "./CourseCard.astro";
     <div class="button-container">
       <Button size="large" href="#">View All Courses</Button>
     </div>
-  </Container>
+  </div>
 </div>
 
 <style>
