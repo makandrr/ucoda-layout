@@ -30,13 +30,10 @@ import Button from "./Button.astro"
         </ul>
       </nav>
       <div class="buttons">
-        <!-- <a class="button" data-type="transparent" href="#">
-          Sign in
-        </a>
-        <a class="button" href="#">Free Trial</a>
-         -->
-         <Button href="#" type="transparent">Sign in</Button>
-         <Button href="#" type="primary">Free Trial</Button>
+        <div class="buttons-container">
+          <Button href="#" type="transparent">Sign in</Button>
+          <Button href="#" type="primary">Free Trial</Button>
+        </div>
         <button class="burger-menu-button">
           <img src="/menu.svg" alt="Open Menu">
         </button>
@@ -226,7 +223,7 @@ import Button from "./Button.astro"
     .navigation .navigation-ul > li.expandable.opened .expandable-content a {
       padding-left: 2rem;
     }
-    .buttons .button {
+    .buttons .buttons-container {
       display: none;
     }
     .primary-header {
