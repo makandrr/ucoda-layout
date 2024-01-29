@@ -26,6 +26,10 @@ import Button from "./Button.astro"
           </li>
           <li><a href="#">Pricing</a></li>
           <li><a href="#">Blog</a></li>
+          <li class="mobile-buttons">
+            <Button href="#" type="transparent">Sign in</Button>
+            <Button href="#" type="primary">Free Trial</Button>
+          </li>
         </ul>
       </nav>
       <div class="buttons">
@@ -171,6 +175,10 @@ import Button from "./Button.astro"
     display: block;
   }
 
+  .mobile-buttons {
+    display: none;
+  }
+
   @media (max-width: 65em) {
     .local-container {
       grid-template-columns: 1fr 1fr;
@@ -201,8 +209,13 @@ import Button from "./Button.astro"
       width: 100%;
       padding: .5rem 1rem;
     }
-    .navigation .navigation-ul li:not(.opened):hover {
+    .navigation .navigation-ul li:not(.opened):not('.mobile-buttons'):hover {
       background-color: var(--accent-light);
+    }
+    .mobile-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
     .navigation .navigation-ul > li.expandable {
       background-position: right 0.5rem center;
