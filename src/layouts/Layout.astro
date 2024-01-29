@@ -1,6 +1,6 @@
 ---
-const { title } = Astro.props;
 import Header from "../components/Header.astro";
+const { title, type = 'default' } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +17,7 @@ import Header from "../components/Header.astro";
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header />
+		<Header type={type} />
 		<slot />
 	</body>
 </html>

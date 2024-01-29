@@ -1,18 +1,14 @@
 ---
 import Button from "./Button.astro";
 import CourseCard from "./CourseCard.astro";
+const allCourses = await Astro.glob('../pages/courses/*.md')
 ---
 
 <div class="courses">
   <div class="container">
     <h2>Our Popular Courses</h2>
     <ul role="list" class="course-list">
-      <div class="card"><CourseCard coursePreview="/courses/c1.jpg" /></div>
-      <div class="card"><CourseCard coursePreview="/courses/c2.jpg" /></div>
-      <div class="card"><CourseCard coursePreview="/courses/c3.jpg" /></div>
-      <div class="card"><CourseCard coursePreview="/courses/c4.jpg" /></div>
-      <div class="card"><CourseCard coursePreview="/courses/c5.jpg" /></div>
-      <div class="card"><CourseCard coursePreview="/courses/c6.jpg" /></div>
+      { allCourses.map(course => <div class="card"><CourseCard coursePreview={course.frontmatter.image} name={course.frontmatter.name} lectures={course.frontmatter.lectures} learners={course.frontmatter.learners} authorName={course.frontmatter.authorName} authorPhoto={course.frontmatter.authorPhoto} price={course.frontmatter.price} url={course.url}/></div>) }
     </ul>
     <div class="button-container">
       <Button size="large" href="#">View All Courses</Button>

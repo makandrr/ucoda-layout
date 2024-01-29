@@ -1,8 +1,10 @@
 ---
 import Button from "./Button.astro"
+const allCourses = await Astro.glob('../pages/courses/*.md')
+const {type} = Astro.props
 ---
 
-<header class="primary-header">
+<header data-type={type} class="primary-header">
   <div class="container">
     <div class="mobile-menu-backdrop"></div>
     <div class="local-container">
@@ -13,15 +15,7 @@ import Button from "./Button.astro"
           <li class="expandable">
             <a href="#">All Courses</a>
             <ul role="list" class="expandable-content">
-              <li><a href="#">Mindfulness for Everyday Life</a></li>
-              <li><a href="#">Stress Management Techniques</a></li>
-              <li><a href="#">Public Speaking</a></li>
-              <li><a href="#">Effective Communication Skills</a></li>
-              <li><a href="#">Time Management Strategies</a></li>
-              <li><a href="#">Goal Setting and Motivation</a></li>
-              <li><a href="#">Build Self-Discipline</a></li>
-              <li><a href="#">Empowering Your Personal Growth</a></li>
-              <li><a href="#">Become a Confident Leader</a></li>
+              {allCourses.map(course => <li><a href={course.url}>{course.frontmatter.name}</a></li>)}
             </ul>
           </li>
           <li><a href="#">Pricing</a></li>
@@ -81,6 +75,9 @@ import Button from "./Button.astro"
   .primary-header {
     background-color: var(--accent-light);
     padding: 3rem 0;
+  }
+  .primary-header[data-type="secondary"] {
+    padding: 1rem 0;
   }
   .local-container {
     display: grid;

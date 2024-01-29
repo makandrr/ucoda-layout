@@ -1,46 +1,50 @@
 ---
-const {coursePreview, name, lectures, learners, authorName, authorPhoto, price, url} = Astro.props
+const {frontmatter} = Astro.props
+import Layout from "./Layout.astro";
 ---
 
-<li class="card">
-  <a href={url}>
-    <div class="frame">
-      <img src={coursePreview} alt="">
-    </div>
-    <div class="card-data">
-      <h3>{name}</h3>
+<Layout type="secondary" title={frontmatter.name}>
+  <div class="container">
+    <div class="card">
+      <div class="frame">
+        <img class="course-image" src={frontmatter.image} alt="">
+      </div>
       <div class="course-numbers">
         <div class="amount lectures-amount">
           <img src="/play.png" alt="">
-          <p>{lectures} Lectures</p>
+          <p>{frontmatter.lectures} Lectures</p>
         </div>
         <div class="amount learners-amount">
           <img src="/learner.svg" alt="">
-          <p>{learners} Learners</p>
+          <p>{frontmatter.learners} Learners</p>
         </div>
       </div>
       <div class="splitter"></div>
       <div class="course-author">
         <div class="avatar-frame">
-          <img class="author-avatar" src={authorPhoto} alt="">
+          <img class="author-avatar" src={frontmatter.authorPhoto} alt="">
         </div>
-        <h3 class="author-name">{authorName}</h3>
-        <div class="author-course-price">${price}</div>
+        <h3 class="author-name">{frontmatter.authorName}</h3>
+        <div class="author-course-price">${frontmatter.price}</div>
       </div>
     </div>
-  </a>
-</li>
+    <h1>{frontmatter.name}</h1>
+    <slot />
+  </div>
+</Layout>
 
 <style>
-.card {
-  background-color: #fff;
+  .container {
+    padding-top: 2rem;
+  }
+  .card {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .frame, .avatar-frame {
   border-radius: 1rem;
-}
-.card a {
-  text-decoration: none;
-}
-.frame, .avatar-frame {
-  border-radius: 1rem 1rem 0 0 ;
   --n: 449;
   --d: 285;
   aspect-ratio: var(--n) / var(--d);
@@ -49,7 +53,9 @@ const {coursePreview, name, lectures, learners, authorName, authorPhoto, price, 
   justify-content: center;
   align-items: center;
 }
-
+.frame {
+  max-width: 30rem;    
+}
 .avatar-frame {
   --n: 1;
   --d: 1;
@@ -62,15 +68,13 @@ const {coursePreview, name, lectures, learners, authorName, authorPhoto, price, 
   block-size: 100%;
   object-fit: cover;
 }
-.card-data {
-  padding: 2rem;
-}
-h3 {
-  color: #242323;
-  font-weight: 600;
-  font-size: 1.875rem;
-}
-.course-numbers {
+
+  h1 {
+    color: #242323;
+    font-weight: 600;
+    font-size: 1.875rem;
+  }
+  .course-numbers {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
