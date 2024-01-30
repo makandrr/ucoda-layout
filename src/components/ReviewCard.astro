@@ -1,16 +1,16 @@
 ---
-const {type} = Astro.props
+const {type, review} = Astro.props
 ---
 
 <li class="card" data-type={type}>
   <div class="avatar-frame">
-    <img src="/reviews/r1.jpg" alt="">
+    <img src={review.frontmatter.authorPhoto} alt="">
   </div>
   <p class="text">
-    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+    <review.Content />
   </p>
-  <h2 class="author-name">Jeiliya mathus</h2>
-  <p class="author-job-title">Product Designer, Google</p>
+  <h2 class="author-name">{review.frontmatter.authorName}</h2>
+  <p class="author-job-title">{review.frontmatter.authorJobTitle}</p>
 </li>
 
 <style>

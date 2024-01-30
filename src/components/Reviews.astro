@@ -1,14 +1,13 @@
 ---
 import ReviewCard from "./ReviewCard.astro";
+const allReviews = await Astro.glob('../content/reviews/*.md')
 ---
 
 <div class="reviews">
   <div class="container">
     <h1>Students say about us </h1>
     <ul class="reviews-list">
-      <div class="card1" ><ReviewCard type="primary" /></div>
-      <div class="card2"><ReviewCard type="secondary" /></div>
-      <div class="card3"><ReviewCard type="secondary" /></div>
+      {allReviews.map((review, index) => <div class={'card' + (index + 1)}><ReviewCard type={index === 0 ? 'primary' : 'secondary'} review={review} /></div>)}
     </ul>  
   </div>  
 </div>
