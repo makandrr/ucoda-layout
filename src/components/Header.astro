@@ -8,28 +8,28 @@ const {type} = Astro.props
   <div class="container">
     <div class="mobile-menu-backdrop"></div>
     <div class="local-container">
-      <img src="/logo.svg" alt="U-Coda">
+      <a href="/"><img src="/logo.svg" alt="U-Coda"></a>
       <nav class="navigation">
         <ul class="navigation-ul" role="list">
-          <li class="active"><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li class="expandable">
-            <a href="#">All Courses</a>
+            <a>All Courses</a>
             <ul role="list" class="expandable-content">
               {allCourses.map(course => <li><a href={course.url}>{course.frontmatter.name}</a></li>)}
             </ul>
           </li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="/#getstarted">Get Started</a></li>
+          <li><a href="/#reviews">Reviews</a></li>
           <li class="mobile-buttons">
-            <Button href="#" type="transparent">Sign in</Button>
-            <Button href="#" type="primary">Free Trial</Button>
+            <Button onClick="alert('Sign In Handler')" type="transparent">Sign in</Button>
+            <Button onClick="alert('Free Trial Handler')" type="primary">Free Trial</Button>
           </li>
         </ul>
       </nav>
       <div class="buttons">
         <div class="buttons-container">
-          <Button href="#" type="transparent">Sign in</Button>
-          <Button href="#" type="primary">Free Trial</Button>
+          <Button onClick="alert('Sign In Handler')" type="transparent">Sign in</Button>
+          <Button onClick="alert('Free Trial Handler')" type="primary">Free Trial</Button>
         </div>
         <button class="burger-menu-button">
           <img src="/menu.svg" alt="Open Menu">
@@ -100,10 +100,8 @@ const {type} = Astro.props
     gap: 4.5rem;
     list-style-type: none;
   }
-  .navigation .navigation-ul > li.active {
-    font-weight: 700;
-  }
   .navigation .navigation-ul > li.expandable {
+    cursor: pointer;
     background-image: url('/expand.svg');
     background-repeat: no-repeat;
     background-position: right bottom 0.5rem;

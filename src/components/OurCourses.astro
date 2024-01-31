@@ -1,18 +1,14 @@
 ---
-import Button from "./Button.astro";
 import CourseCard from "./CourseCard.astro";
 const allCourses = await Astro.glob('../pages/courses/*.md')
 ---
 
-<div class="courses">
+<div id="courses" class="courses">
   <div class="container">
-    <h2>Our Popular Courses</h2>
+    <h2>Our Courses</h2>
     <ul role="list" class="course-list">
       { allCourses.map(course => <div class="card"><CourseCard coursePreview={course.frontmatter.image} name={course.frontmatter.name} lectures={course.frontmatter.lectures} learners={course.frontmatter.learners} authorName={course.frontmatter.authorName} authorPhoto={course.frontmatter.authorPhoto} price={course.frontmatter.price} url={course.url}/></div>) }
     </ul>
-    <div class="button-container">
-      <Button size="large" href="#">View All Courses</Button>
-    </div>
   </div>
 </div>
 
@@ -34,11 +30,6 @@ const allCourses = await Astro.glob('../pages/courses/*.md')
   }
   .course-list > :nth-child(3n-1) {
     transform: translateY(-3.5rem);
-  }
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
   }
   @media (max-width: 80em) {
     .course-list > :nth-child(3n-1) {

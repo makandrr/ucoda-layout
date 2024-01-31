@@ -1,13 +1,21 @@
 ---
-const {href = '', type = 'primary', size = 'default'} = Astro.props
+const {href = '', type = 'primary', size = 'default', onClick = ''} = Astro.props
 ---
 
-<a href={href} data-type={type} data-size={size} class="button">
+{
+	onClick ? 
+	<a data-type={type} data-size={size} class="button" onclick={onClick}>
   <slot />
 </a>
+:
+<a href={href} data-type={type} data-size={size} class="button" onclick={onClick}>
+  <slot />
+</a>
+}
 
 <style>
   .button {
+		cursor: pointer;
 		display: inline-flex;
 		padding: 1rem 1.5rem;
 		background-color: var(--accent);
